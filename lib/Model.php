@@ -673,6 +673,14 @@ class Model
 	}
 
 	/**
+	 * get full table name 
+	 * @return string
+	 */
+	static function full_table_name()
+	{
+		return self::connection()->query_and_fetch_one('SELECT DATABASE() AS current_database;') . '.' . self::table()->table;
+	}
+	/**
 	 * Returns the attribute name on the delegated relationship if $name is
 	 * delegated or null if not delegated.
 	 *
